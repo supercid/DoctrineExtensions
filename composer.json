@@ -32,6 +32,10 @@
             "name": "David Buchmann",
             "email": "david@liip.ch"
         }
+        {
+            "name": "Cid Lopes",
+            "email": "admin@supercid.com.br"
+        }
     ],
     "support": {
         "email": "gediminas.morkevicius@gmail.com",
@@ -61,7 +65,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.4.x-dev"
+            "dev-master": "3.0"
         }
     }
 }
