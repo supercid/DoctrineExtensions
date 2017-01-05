@@ -70,6 +70,13 @@ abstract class AbstractLogEntry
     protected $username;
 
     /**
+     * @var string $data
+     *
+     * @ORM\Column(length=64, nullable=true)
+     */
+    protected $ip;
+
+    /**
      * Get id
      *
      * @return integer
@@ -150,6 +157,16 @@ abstract class AbstractLogEntry
     }
 
     /**
+     * Get ip
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
      * Set username
      *
      * @param string $username
@@ -157,6 +174,16 @@ abstract class AbstractLogEntry
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
     }
 
     /**
