@@ -37,6 +37,12 @@ class LoggableListener extends MappedEventSubscriber
      * @var string
      */
     protected $username;
+    /**
+     * IpAddress
+     *
+     * @var string
+     */
+    protected $ip;
 
     /**
      * List of log entries which do not have the foreign
@@ -72,6 +78,27 @@ class LoggableListener extends MappedEventSubscriber
             $this->username = (string) $username->getUsername();
         } else {
             throw new \Gedmo\Exception\InvalidArgumentException("Username must be a string, or object should have method: getUsername");
+        }
+    }
+
+    /**
+     * Set IP address
+     *
+     * @param mixed $ip
+     *
+     * @throws \Gedmo\Exception\InvalidArgumentException Invalid Ip
+     */
+    public function setIp($ip)
+    {
+
+        // $this->ip = $ip;
+
+        if (is_string($ip)) {
+            $this->ip = $ip;
+        } elseif (is_object($ip) && method_exists($ip, 'getIp')) {
+            $this->ip = (string) $ip->getIp();
+        } else {
+            throw new \Gedmo\Exception\InvalidArgumentException("Ip must be a string, or object should have method: getIp");
         }
     }
 
@@ -281,6 +308,7 @@ class LoggableListener extends MappedEventSubscriber
 
             $logEntry->setAction($action);
             $logEntry->setUsername($this->username);
+            $logEntry->setIp($this->ip);
             $logEntry->setObjectClass($meta->name);
             $logEntry->setLoggedAt();
 
